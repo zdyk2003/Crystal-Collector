@@ -1,0 +1,66 @@
+body{
+	background-image: url(../images/gemBack.jpg);
+	font-family:  'Arial', 'Verdana', Verdana, sans-serif;
+}
+
+.container{
+	margin-top: 15px;
+	background-color: #68b8ff;
+	/*#f4ff68;*/
+	/*#c7ccd8;*/
+	width: 60%;
+	padding: 30px;
+}
+
+h1{
+	font-size: 30px;
+	text-align: center;
+}
+
+h2{
+	font-size: 24px;
+}
+
+p{
+	font-size: 18px;
+	text-align: center;
+}
+
+.title{
+	padding: 20px;
+}
+
+.rules{
+	padding: 20px;
+	
+}
+
+#randomNumber{
+	
+	padding: 20px;
+	margin-left: 170px;
+	float: left;
+}
+
+.score{
+	font-size: 24px;
+	padding: 20px;
+	float: left;
+	margin-left: 50px;
+	margin-top: -50px;
+}
+.images{
+	clear: both;
+	text-align: center;
+	padding: 20px;
+
+}
+
+.totalScore{
+	padding: 20px;
+	text-align: center;
+}
+
+.counter{
+	font-size: 24px;
+}
