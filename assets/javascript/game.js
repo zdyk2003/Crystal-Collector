@@ -45,13 +45,15 @@ $(document).ready(function(){
 				$(".loss").text("Losses: " + losses);
 				newGame();
 			}	
+
 	});
 
 
-//need to clear the console so that is does not continue to add to the counter even though the counter is set back to zero
+// //need to clear the console so that is does not continue to add to the counter even though the counter on the screen is set back to zero
 	function newGame() {
 		counter = 0;
 		$(".counter").text(counter);
+		console.clear();
 	 	var ranNumber = numberBank[Math.floor(Math.random() * numberBank.length)];
 		$("#randomNumber").text("Number to Match: " + ranNumber);
 		var ranGemNum = gemNumBank[Math.floor(Math.random() * gemNumBank.length)];
