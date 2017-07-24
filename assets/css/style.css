@@ -6,8 +6,6 @@ body{
 .container{
 	margin-top: 15px;
 	background-color: #68b8ff;
-	/*#f4ff68;*/
-	/*#c7ccd8;*/
 	width: 60%;
 	padding: 30px;
 }
@@ -31,23 +29,25 @@ p{
 }
 
 .rules{
-	padding: 20px;
-	
+	padding: 20px;	
 }
 
 #randomNumber{
-	
 	padding: 20px;
 	margin-left: 170px;
 	float: left;
 }
 
+#totalScore{
+	padding: 20px;
+	float: left;
+	margin-left: 60px;
+}
+
 .score{
 	font-size: 24px;
 	padding: 20px;
-	float: left;
-	margin-left: 50px;
-	margin-top: -50px;
+	text-align: center;
 }
 .images{
 	clear: both;
@@ -56,11 +56,4 @@ p{
 
 }
 
-.totalScore{
-	padding: 20px;
-	text-align: center;
-}
 
-.counter{
-	font-size: 24px;
-}

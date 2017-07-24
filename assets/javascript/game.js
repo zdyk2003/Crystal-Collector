@@ -1,73 +1,103 @@
-// 	var for random number
-	// var for wins
-	// var for losses
-	// var for score
-	// var for random number 
-	// var for random number for gems
+//GLOBAL VARIALBES
+//==========================================================
+//Crystal Variable
+var crystal = {
+	blue: {
+		name: "blue",
+		value: 0
+	},
+	green: {
+		name: "green",
+		value: 0
+	},
+	pink: {
+		name: "pink",
+		value: 0
+	},
+	purple: {
+		name: "purple",
+		value: 0
+	},
+}
+//Scores(Target and Current)
+var currentScore = 0;
+var targetScore = 0;
+//Wins and losses
+var winCount = 0;
+var lossCount = 0;
 
-$(document).ready(function(){
+//FUNCTIONS
+//==============================================================
+var getRandom = function(min, max) {
+	return Math.floor(Math.random() *(max - min + 1)) + min;
+}
+//starts the game
+var startGame = function() {
+ 
+ 	//reset the current score
+ 	currentScore = 0;
+ 	//set the new target score (between 19-120)
+ 	targetScore  			= getRandom(19, 120); 
+ 	//set different values for the crystals (between 1-12)
+ 	crystal.blue.value 		= getRandom(1,12);
+ 	crystal.green.value 	= getRandom(1,12);
+ 	crystal.pink.value 		= getRandom(1,12);
+ 	crystal.purple.value 	= getRandom(1,12);
 
-	var wins = 0;
-	var losses = 0;
-	var counter = 0;
+ 	//change HTML to reflect changes
+ 	$("#totalScore").html("<h2>Your Score: " + currentScore + "</h2>");
+ 	$("#randomNumber").html("Number to Match: " + targetScore);
+ 	//test
+ 	console.log("Target Score: " + targetScore);
+ 	console.log("blue " + crystal.blue.value + " | green: " + crystal.green.value + " | pink: " + crystal.pink.value + " | purple: " + crystal.purple.value);
+}
+// function for crystal click
+var addValue = function(crystal) {
+	//change current score
+	currentScore = currentScore + crystal.value;
+	//change HTML to reflect current score
+	$("#totalScore").html("<h2>Your Score: " + currentScore + "</h2>");
 
-		// generate random number
-		var numberBank = [22,65,88,105];
-		var ranNumber = numberBank[Math.floor(Math.random() * numberBank.length)];
-		$("#randomNumber").text("Number to Match: " + ranNumber);
+	checkWin();
 
-		// var for random values for crystals
-		var gemNumBank = [1, 5, 8, 12];
-		var ranGemNum = gemNumBank[Math.floor(Math.random() * gemNumBank.length)];
-		console.log(ranGemNum);
-
-		// need to get the random number to assign to each image individually
-		// instead of all the images having the same random number
-		for (var i = 0; i < gemNumBank.length; i++) {
-			var gems = $(".gems");
-			var gemValue= ranGemNum;
-		}
+	console.log("Your score: " + currentScore);
+}
+//check if user won or lost and reset the game
+var checkWin = function() {
+	if(currentScore > targetScore) {
+		console.log('loss');
+		lossCount++;
+		$(".lossCount").html("Losses: " + lossCount);
+		//restart the game
+		startGame();
+	}
+	else if (currentScore === targetScore){
+		console.log('win');
+		winCount++;
+		$(".winCount").html("Wins: " + winCount);
+		//restart the game
+		startGame();
+	}
+}
 		
-// add to the score by clicking on the gems to determine wins + losses
-	
-	$(".gems").on("click", function() {
-		counter +=  gemValue;
-		$(".counter").text(counter);
-		console.log(gemValue);
+//CRYSTAL VALUE
+//=======================================================================	
 
-			if(counter === ranNumber){
-				wins++;
-				$(".win").text("Wins: " + wins);
-				newGame();
-			}
-			else if(counter > ranNumber) {
-				losses++;
-				$(".loss").text("Losses: " + losses);
-				newGame();
-			}	
+//starts the game
+startGame();
 
+	$("#blue").on("click", function() {
+		addValue(crystal.blue);
 	});
-
-
-// //need to clear the console so that is does not continue to add to the counter even though the counter on the screen is set back to zero
-	function newGame() {
-		counter = 0;
-		$(".counter").text(counter);
-		console.clear();
-	 	var ranNumber = numberBank[Math.floor(Math.random() * numberBank.length)];
-		$("#randomNumber").text("Number to Match: " + ranNumber);
-		var ranGemNum = gemNumBank[Math.floor(Math.random() * gemNumBank.length)];
-	}	
-
-});	
-
-
-
-//data attr gemValue is equal to the array values ==always returns a NaN value?
-		// gems.attr("data-gemValue", ranGemNum[i]);
-		//take the gem value and convert it to an integer and then add to the counter
-		// var gemValue = ($(this).attr("data-gemValue"));
-		// 	gemValue = parseInt(gemValue);
+	$("#green").on("click", function() {
+		addValue(crystal.green);
+	});
+	$("#pink").on("click", function() {
+		addValue(crystal.pink);
+	});
+	$("#purple").on("click", function() {
+		addValue(crystal.purple);
+	});
 	
 
 
